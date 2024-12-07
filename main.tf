@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-west-2"
 }
 
-# Create an S3 bucket for file storage
+# Create an S3 bucket for file storage 
 resource "aws_s3_bucket" "example_bucket" {
   bucket = "example-bucket-12345"
   acl    = "private"
