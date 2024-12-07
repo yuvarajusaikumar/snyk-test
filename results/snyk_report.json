@@ -1,0 +1,309 @@
+{
+  "meta": {
+    "isPrivate": true,
+    "isLicensesEnabled": false,
+    "ignoreSettings": {
+      "adminOnly": false,
+      "reasonRequired": false,
+      "disregardFilesystemIgnores": false,
+      "autoApproveIgnores": false
+    },
+    "org": "yuvarajusaikumar",
+    "orgPublicId": "31327ee1-0a5c-43c2-aade-fc439b159ced",
+    "policy": ""
+  },
+  "filesystemPolicy": false,
+  "vulnerabilities": [],
+  "dependencyCount": 0,
+  "licensesPolicy": null,
+  "ignoreSettings": null,
+  "targetFile": "main.tf",
+  "projectName": "snyk-test",
+  "org": "yuvarajusaikumar",
+  "policy": "",
+  "isPrivate": true,
+  "targetFilePath": "C:\\Projects\\snyk-test\\main.tf",
+  "packageManager": "terraformconfig",
+  "path": "C:\\Projects\\snyk-test",
+  "projectType": "terraformconfig",
+  "ok": false,
+  "infrastructureAsCodeIssues": [
+    {
+      "id": "SNYK-CC-TF-73",
+      "title": "AWS Security Group allows open egress",
+      "severity": "low",
+      "isIgnored": false,
+      "subType": "VPC",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-73",
+      "isGeneratedByCustomRule": false,
+      "issue": "The inline security group rule allows open egress",
+      "impact": "Open egress can be used to exfiltrate data to unauthorized destinations, and enable access to potentially malicious resources",
+      "resolve": "Set `egress.cidr_blocks` attribute to specific ranges e.g. `192.168.1.0/24`",
+      "remediation": {
+        "cloudformation": "Set `Properties.SecurityGroupEgress.CidrIp` attribute to specific ranges e.g. `192.168.1.0/24`",
+        "terraform": "Set `egress.cidr_blocks` attribute to specific ranges e.g. `192.168.1.0/24`"
+      },
+      "lineNumber": 23,
+      "iacDescription": {
+        "issue": "The inline security group rule allows open egress",
+        "impact": "Open egress can be used to exfiltrate data to unauthorized destinations, and enable access to potentially malicious resources",
+        "resolve": "Set `egress.cidr_blocks` attribute to specific ranges e.g. `192.168.1.0/24`"
+      },
+      "publicId": "SNYK-CC-TF-73",
+      "msg": "resource.aws_security_group[example_sg].egress",
+      "references": [
+        "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html",
+        "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-best-practices.html"
+      ],
+      "path": [
+        "resource",
+        "aws_security_group[example_sg]",
+        "egress"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-TF-124",
+      "title": "S3 bucket versioning disabled",
+      "severity": "low",
+      "isIgnored": false,
+      "subType": "S3",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-124",
+      "isGeneratedByCustomRule": false,
+      "issue": "S3 bucket versioning is disabled",
+      "impact": "Changes or deletion of objects will not be reversible",
+      "resolve": "For AWS provider < v4.0.0, set `versioning.enabled` attribute to `true`. For AWS provider >= v4.0.0, add aws_s3_bucket_versioning resource.",
+      "remediation": {
+        "cloudformation": "Set `Properties.VersioningConfiguration.Status` attribute to `Enabled`",
+        "terraform": "For AWS provider < v4.0.0, set `versioning.enabled` attribute to `true`. For AWS provider >= v4.0.0, add aws_s3_bucket_versioning resource."
+      },
+      "lineNumber": 6,
+      "iacDescription": {
+        "issue": "S3 bucket versioning is disabled",
+        "impact": "Changes or deletion of objects will not be reversible",
+        "resolve": "For AWS provider < v4.0.0, set `versioning.enabled` attribute to `true`. For AWS provider >= v4.0.0, add aws_s3_bucket_versioning resource."
+      },
+      "publicId": "SNYK-CC-TF-124",
+      "msg": "resource.aws_s3_bucket[example_bucket].versioning.enabled",
+      "references": [
+        "https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html"
+      ],
+      "path": [
+        "resource",
+        "aws_s3_bucket[example_bucket]",
+        "versioning",
+        "enabled"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-TF-45",
+      "title": "S3 server access logging is disabled",
+      "severity": "low",
+      "isIgnored": false,
+      "subType": "S3",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-45",
+      "isGeneratedByCustomRule": false,
+      "issue": "The s3 access logs will not be collected",
+      "impact": "There will be no audit trail of access to s3 objects",
+      "resolve": "For AWS provider < v4.0.0, add `logging` block attribute. For AWS provider >= v4.0.0, add aws_s3_bucket_logging resource.",
+      "remediation": {
+        "cloudformation": "Set `Properties.LoggingConfiguration` attribute",
+        "terraform": "For AWS provider < v4.0.0, add `logging` block attribute. For AWS provider >= v4.0.0, add aws_s3_bucket_logging resource."
+      },
+      "lineNumber": 6,
+      "iacDescription": {
+        "issue": "The s3 access logs will not be collected",
+        "impact": "There will be no audit trail of access to s3 objects",
+        "resolve": "For AWS provider < v4.0.0, add `logging` block attribute. For AWS provider >= v4.0.0, add aws_s3_bucket_logging resource."
+      },
+      "publicId": "SNYK-CC-TF-45",
+      "msg": "input.resource.aws_s3_bucket[example_bucket].logging",
+      "references": [
+        "https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html"
+      ],
+      "path": [
+        "input",
+        "resource",
+        "aws_s3_bucket[example_bucket]",
+        "logging"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-TF-127",
+      "title": "S3 bucket MFA delete control disabled",
+      "severity": "low",
+      "isIgnored": false,
+      "subType": "S3",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-127",
+      "isGeneratedByCustomRule": false,
+      "issue": "S3 bucket will not enforce MFA login on delete requests",
+      "impact": "Object could be deleted without stronger MFA authorization",
+      "resolve": "Follow instructions in `https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html` to manually configure the MFA setting. For AWS provider < v4.0.0 set `versioning.mfa_delete` attribute to `true` in aws_s3_bucket resource. For AWS provider >= v4.0.0 set 'versioning_configuration.mfa_delete` attribute to `Enabled`. The terraform change is required to reflect the setting in the state file",
+      "remediation": {
+        "terraform": "Follow instructions in `https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html` to manually configure the MFA setting. For AWS provider < v4.0.0 set `versioning.mfa_delete` attribute to `true` in aws_s3_bucket resource. For AWS provider >= v4.0.0 set 'versioning_configuration.mfa_delete` attribute to `Enabled`. The terraform change is required to reflect the setting in the state file"
+      },
+      "lineNumber": 6,
+      "iacDescription": {
+        "issue": "S3 bucket will not enforce MFA login on delete requests",
+        "impact": "Object could be deleted without stronger MFA authorization",
+        "resolve": "Follow instructions in `https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html` to manually configure the MFA setting. For AWS provider < v4.0.0 set `versioning.mfa_delete` attribute to `true` in aws_s3_bucket resource. For AWS provider >= v4.0.0 set 'versioning_configuration.mfa_delete` attribute to `Enabled`. The terraform change is required to reflect the setting in the state file"
+      },
+      "publicId": "SNYK-CC-TF-127",
+      "msg": "resource.aws_s3_bucket[example_bucket].versioning.mfa_delete",
+      "references": [
+        "https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html",
+        "https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html",
+        "https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html"
+      ],
+      "path": [
+        "resource",
+        "aws_s3_bucket[example_bucket]",
+        "versioning",
+        "mfa_delete"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-TF-1",
+      "title": "Security Group allows open ingress",
+      "severity": "medium",
+      "isIgnored": false,
+      "subType": "VPC",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-1",
+      "isGeneratedByCustomRule": false,
+      "issue": "That inbound traffic is allowed to a resource from any source instead of a restricted range",
+      "impact": "That potentially everyone can access your resource",
+      "resolve": "Set `cidr_block` attribute with a more restrictive IP, for example `192.16.0.0/24`",
+      "remediation": {
+        "cloudformation": "Set `Properties.SecurityGroupIngress.CidrIp` attribute with a more restrictive IP, for example `192.16.0.0/24`",
+        "terraform": "Set `cidr_block` attribute with a more restrictive IP, for example `192.16.0.0/24`"
+      },
+      "lineNumber": 16,
+      "iacDescription": {
+        "issue": "That inbound traffic is allowed to a resource from any source instead of a restricted range",
+        "impact": "That potentially everyone can access your resource",
+        "resolve": "Set `cidr_block` attribute with a more restrictive IP, for example `192.16.0.0/24`"
+      },
+      "publicId": "SNYK-CC-TF-1",
+      "msg": "input.resource.aws_security_group[example_sg].ingress",
+      "references": [
+        "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html"
+      ],
+      "path": [
+        "input",
+        "resource",
+        "aws_security_group[example_sg]",
+        "ingress"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-AWS-426",
+      "title": "EC2 API termination protection is not enabled",
+      "severity": "low",
+      "isIgnored": false,
+      "subType": "EC2",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-AWS-426",
+      "isGeneratedByCustomRule": false,
+      "issue": "To prevent instance from being accidentally terminated using Amazon EC2, you can enable termination protection for the instance",
+      "impact": "Without this setting enabled the instances can be terminated by accident. This setting should only be used for instances with high availability requirements. Enabling this may prevent IaC workflows from updating the instance, for example terraform will not be able to terminate the instance to update instance type",
+      "resolve": "Set `disable_api_termination` attribute  with value `true`",
+      "remediation": {
+        "cloudformation": "Set `DisableApiTermination` attribute with value `true`",
+        "terraform": "Set `disable_api_termination` attribute  with value `true`"
+      },
+      "lineNumber": 32,
+      "iacDescription": {
+        "issue": "To prevent instance from being accidentally terminated using Amazon EC2, you can enable termination protection for the instance",
+        "impact": "Without this setting enabled the instances can be terminated by accident. This setting should only be used for instances with high availability requirements. Enabling this may prevent IaC workflows from updating the instance, for example terraform will not be able to terminate the instance to update instance type",
+        "resolve": "Set `disable_api_termination` attribute  with value `true`"
+      },
+      "publicId": "SNYK-CC-AWS-426",
+      "msg": "resource.aws_instance[example].disable_api_termination",
+      "references": [
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination"
+      ],
+      "path": [
+        "resource",
+        "aws_instance[example]",
+        "disable_api_termination"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-TF-130",
+      "title": "EC2 instance accepts IMDSv1",
+      "severity": "low",
+      "isIgnored": false,
+      "subType": "EC2",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-130",
+      "isGeneratedByCustomRule": false,
+      "issue": "Instance Metadata Service v2 is not enforced",
+      "impact": "Metadata service may be vulnerable to reverse proxy/open firewall misconfigurations and server side request forgery attacks",
+      "resolve": "Set `metadata_options.http_tokens` attribute to `required`",
+      "remediation": {
+        "cloudformation": "Set `MetadataOptions.HttpTokens` attribute to `required` in `AWS::EC2::LaunchTemplate`",
+        "terraform": "Set `metadata_options.http_tokens` attribute to `required`"
+      },
+      "lineNumber": 32,
+      "iacDescription": {
+        "issue": "Instance Metadata Service v2 is not enforced",
+        "impact": "Metadata service may be vulnerable to reverse proxy/open firewall misconfigurations and server side request forgery attacks",
+        "resolve": "Set `metadata_options.http_tokens` attribute to `required`"
+      },
+      "publicId": "SNYK-CC-TF-130",
+      "msg": "resource.aws_instance[example].metadata_options",
+      "references": [
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html",
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html",
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html",
+        "https://aws.amazon.com/blogs/security/defense-in-depth-open-firewalls-reverse-proxies-ssrf-vulnerabilities-ec2-instance-metadata-service/"
+      ],
+      "path": [
+        "resource",
+        "aws_instance[example]",
+        "metadata_options"
+      ],
+      "compliance": []
+    },
+    {
+      "id": "SNYK-CC-TF-53",
+      "title": "Non-Encrypted root block device",
+      "severity": "medium",
+      "isIgnored": false,
+      "subType": "EC2",
+      "documentation": "https://security.snyk.io/rules/cloud/SNYK-CC-TF-53",
+      "isGeneratedByCustomRule": false,
+      "issue": "The root block device for ec2 instance is not encrypted",
+      "impact": "That should someone gain unauthorized access to the data they would be able to read the contents.",
+      "resolve": "Set `root_block_device.encrypted` attribute to `true`",
+      "remediation": {
+        "cloudformation": "Set `BlockDeviceMappings.Encrypted` attribute of root device to `true`",
+        "terraform": "Set `root_block_device.encrypted` attribute to `true`"
+      },
+      "lineNumber": 32,
+      "iacDescription": {
+        "issue": "The root block device for ec2 instance is not encrypted",
+        "impact": "That should someone gain unauthorized access to the data they would be able to read the contents.",
+        "resolve": "Set `root_block_device.encrypted` attribute to `true`"
+      },
+      "publicId": "SNYK-CC-TF-53",
+      "msg": "resource.aws_instance[example].root_block_device.encrypted",
+      "references": [
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html",
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html",
+        "https://aws.amazon.com/premiumsupport/knowledge-center/cloudformation-root-volume-property/",
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html"
+      ],
+      "path": [
+        "resource",
+        "aws_instance[example]",
+        "root_block_device",
+        "encrypted"
+      ],
+      "compliance": []
+    }
+  ]
+}
