@@ -1,6 +1,0 @@
-
-Snyk Infrastructure as Code
-
-- Snyk testing Infrastructure as Code configuration issues.
-  Unsupported flag "--list" provided. Run snyk iac test --help for supported flags
-  Path: C:\Projects\snyk-test
